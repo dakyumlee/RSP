@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSP</title>
+  <script>
+    function RSP() {
+      let OPTIONS = 3;
+      let Rock = 1,
+          Paper = 2,
+          Scissors = 3;
+      let COMPUTER = 1,
+          PLAYER = 2,
+          TIE = 3;
+
+      let computer,
+          winner = 0;
+      let wins = 0,
+          losses = 0,
+          ties = 0;
+
+      let playAgain = true;
+
+      while (playAgain) {
+        computer = Math.floor(Math.random() * OPTIONS) + 1;
+
+        let player = prompt("가위 바위 보!");
+
+        switch (player) {
+          case "바위":
+            alert("바위를 냈습니다.");
+            break;
+
+          case "보":
+            alert("보를 냈습니다.");
+            break;
+
+          case "가위":
+            alert("가위를 냈습니다.");
+            break;
+
+          default:
+            alert("올바른 선택지를 입력해주세요.");
+            continue;
+        }
+
+        switch (computer) {
+          case Rock:
+            alert("컴퓨터는 바위를 냈습니다.");
+            if (player === "가위") winner = COMPUTER;
+            else if (player === "보") winner = PLAYER;
+            else winner = TIE;
+            break;
+
+          case Paper:
+            alert("컴퓨터는 보를 냈습니다.");
+            if (player === "바위") winner = COMPUTER;
+            else if (player === "가위") winner = PLAYER;
+            else winner = TIE;
+            break;
+
+          case Scissors:
+            alert("컴퓨터는 가위를 냈습니다.");
+            if (player === "보") winner = COMPUTER;
+            else if (player === "바위") winner = PLAYER;
+            else winner = TIE;
+            break;
+        }
+
+        if (winner === COMPUTER) {
+          alert("졌습니다..");
+          losses++;
+        } else if (winner === PLAYER) {
+          alert("이겼습니다.");
+          wins++;
+        } else {
+          alert("비겼습니다.");
+          ties++;
+        }
+
+        playAgain = confirm("다시 하시겠습니까?");
+      } if (playAgain == false){
+        alert("게임을 종료합니다.")
+      }
+
+      alert("당신이 이긴 횟수: " + wins);
+      alert("당신이 진 횟수: " + losses);
+      alert("비긴 횟수: " + ties);
+    }
+  </script>
+  <style>
+      html {
+          font-family: sans-serif;
+        }
+      body {
+        text-align: center;
+      }
+      button  {
+        margin-top: 10%;
+        margin-left: 0%;
+        width: 100px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      button:hover{
+        width: 100px;
+        height: 50px;
+        background-color: rgb(82, 82, 83);
+        border-radius: 50%;
+      }
+  </style>
+</head>
+<body> <body>
+  <h1>let's play RSP</h1>
+  <p>go.</p>
+  <button type="button" onClick="RSP()">가위바위보</button>
+</body>
+</html>
